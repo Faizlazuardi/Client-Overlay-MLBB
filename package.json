@@ -1,0 +1,14 @@
+{
+  "name": "mlbb-overlay-frontend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Faiz Lazuardi",
+  "license": "ISC",
+  "description": "Frontend for Mobile Legends Overlay",
+  "dependencies": {
+    "socket.io-client": "^4.8.1"
+  }
+}

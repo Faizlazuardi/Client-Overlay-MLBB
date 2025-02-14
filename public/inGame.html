@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MLBB Overlay Ingame">
+    <!-- CSS -->
+    <link href="css/Ingame.css" rel="stylesheet">
+    <!-- Javascript -->
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+    <script type="module" src="script.js"></script>
+    <title>MLBB OVERLAY INGAME</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">
+            <img class="nav-logo" src="images/Logo Binusian Gaming.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a class="nav-link" href="index.html">Dashboard</a>
+            <a class="nav-link" href="draftPick.html">Draft Pick</a>
+            <a class="nav-link" href="ingame.html">ingame</a>
+        </div>
+    </nav>
+    <main>
+        <div class="overlay">
+            <div class="map"></div>
+            
+            <div class="sponsor">
+                <img class="sponsor-logo" src="images/Logo Binus University.png" alt="Sponsor Logo 1">
+                <img class="sponsor-logo" src="images/Logo Binusian Gaming.png" alt="Sponsor Logo 2">
+            </div>
+            
+            <div class="team-logo team-logo-1">
+                <img class="team-badge" id="logo-1" src="images/80x80.png" alt="Logo Blue">
+            </div>
+            
+            <div class="team-logo team-logo-2">
+                <img class="team-badge" id="logo-2" src="images/80x80.png" alt="Logo Red">
+            </div>
+            
+            <h2 class="game-stats time" id="timestamp">00:00</h2>
+            <h2 class="game-stats kill-poin-1">0</h2>
+            <h2 class="game-stats kill-poin-2">0</h2>
+            
+            <div class="game-stats turtle-1">
+                <img class="icon-game" src="images/turtle icon.png" alt="turtle">
+                <p class="turtle-poin-1">0</p>
+            </div>
+            
+            <div class="game-stats turtle-2">
+                <img class="icon-game" src="images/turtle icon.png" alt="turtle">
+                <p class="turtle-poin-2">0</p>
+            </div>
+            
+            <div class="game-stats lord-1">
+                <img class="icon-game" src="images/lord icon.png" alt="lord">
+                <p class="lord-poin-1">0</p>
+            </div>
+            
+            <div class="game-stats lord-2">
+                <img class="icon-game" src="images/lord icon.png" alt="lord">
+                <p class="lord-poin-2">0</p>
+            </div>
+            
+            <div class="game-stats turet-1">
+                <img class="icon-game" src="images/turet icon.png" alt="turet">
+                <p class="turet-poin-1">0</p>
+            </div>
+            
+            <div class="game-stats turet-2">
+                <img class="icon-game" src="images/turet icon.png" alt="turet">
+                <p class="turet-poin-2">0</p>
+            </div>
+            
+            <div class="game-stats gold-1">
+                <img class="icon-game" src="images/gold icon.png" alt="gold">
+                <p class="gold-poin-1">000.0K</p>
+            </div>
+            
+            <div class="game-stats gold-2">
+                <img class="icon-game" src="images/gold icon.png" alt="gold">
+                <p class="gold-poin-2">000.0K</p>
+            </div>
+            
+            <div class="game-stats team-info-1">
+                <h1 class="team-name-display" id="team-name-display-1"></h1>
+                <div class="team-score team-score-1">
+                    <div class="border-win">
+                        <img class="win-icon" id="win-icon-1" src="images/win.png" alt="Win Icon 1">
+                    </div>
+                    <div class="border-win">
+                        <img class="win-icon" id="win-icon-2" src="images/win.png" alt="Win Icon 2">
+                    </div>
+                    <div class="border-win">
+                        <img class="win-icon" id="win-icon-3" src="images/win.png" alt="Win Icon 3">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-stats team-info-2">
+                <h1 class="team-name-display" id="team-name-display-2"></h1>
+                <div class="team-score team-score-2">
+                    <div class="border-win">
+                        <img class="win-icon" id="win-icon-4" src="images/win.png" alt="Win Icon 4">
+                    </div>
+                    <div class="border-win">
+                        <img class="win-icon" id="win-icon-5" src="images/win.png" alt="Win Icon 5">
+                    </div>
+                    <div class="border-win">
+                        <img class="win-icon" id="win-icon-6" src="images/win.png" alt="Win Icon 6">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="control-panel">
+            <h1 class="title">Match Settings</h1>
+            
+            <div class="team-settings">
+                <button class="buttons" id="switch-team">Switch Team</button>
+                <button class="buttons" id="reset-team">Reset Team</button>
+            </div>
+            
+            <div class="timer-panel">
+                <h2>Timer</h2>
+                <button class="buttons" id="start-btn">Start</button>
+                <button class="buttons" id="stop-btn">Stop</button>
+                <button class="buttons" id="reset-btn">Reset</button>
+            </div>
+            
+            <div class="team-data team-data-1">
+                <label class="team-label"><h2>Blue Team</h2>
+                    <input class="input-field teams" id="team-1" type="text" placeholder="Enter team name" maxlength="6">
+                </label>
+                <label class="logo-label"><h2>Team Logo</h2>
+                    <input class="input-field file-logo" id="file-logo-1" type="file" accept="image/*">
+                </label>
+                <div class="checkbox-container">
+                    <h2>Win Check</h2>
+                    <label class="win-label">
+                        <input class="win-check" id="win-check-1" type="checkbox" unchecked>1
+                    </label>
+                    <label class="win-label">
+                        <input class="win-check" id="win-check-2" type="checkbox" unchecked>2
+                    </label>
+                    <label class="win-label">
+                        <input class="win-check" id="win-check-3" type="checkbox" unchecked>3
+                    </label>
+                </div>
+            </div>
+            
+            <div class="team-data team-data-2">
+                <label class="team-label"><h2>Red Team</h2>
+                    <input class="input-field teams" id="team-2" type="text" placeholder="Enter team name" maxlength="6">
+                </label>
+                <label class="logo-label"><h2>Team Logo</h2>
+                    <input class="input-field file-logo" id="file-logo-2" type="file" accept="image/*">
+                </label>
+                <div class="checkbox-container">
+                    <h2>Win Check</h2>
+                    <label class="win-label">
+                        <input class="win-check" id="win-check-4" type="checkbox" unchecked>1
+                    </label>
+                    <label class="win-label">
+                        <input class="win-check" id="win-check-5" type="checkbox" unchecked>2
+                    </label>
+                    <label class="win-label">
+                        <input class="win-check" id="win-check-6" type="checkbox" unchecked>3
+                    </label>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
