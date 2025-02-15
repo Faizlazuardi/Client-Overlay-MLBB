@@ -499,7 +499,7 @@ function update(){
 };
 
 if (document.querySelector('meta[name="description"]').content === 'MLBB Overlay Ingame') {
-    const socket = new WebSocket("ws://localhost:3000/ingame");
+    const socket = new WebSocket("wss://server-overlay-mlbb-production.up.railway.app/ingame");
     
     socket.onmessage = (event) => {
         try {
